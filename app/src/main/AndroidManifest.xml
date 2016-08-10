@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.proyecto.proyecto">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:installLocation="auto"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HomeJuegos" />
+        <activity android:name=".HomeMemotest" />
+        <activity android:name=".Memotest" />
+        <activity android:name=".HomeAsociacion" />
+        <activity android:name=".Asociacion" />
+        <activity android:name=".ResultadosAsociacion" />
+        <activity android:name=".ResultadosMemotest" />
+        <activity android:name=".HomeSimon" />
+        <activity android:name=".Simon" />
+        <activity android:name=".ResultadosSimon" />
+        <activity android:name=".HomeFreestyle" />
+        <activity android:name=".Freestyle"></activity>
+    </application>
+
+</manifest>

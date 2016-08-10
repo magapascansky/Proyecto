@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.proyecto.proyecto.HomeMemotest"
+    android:background="@drawable/backgroundmemotest">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="481dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp">
+
+            <ImageView
+                android:layout_width="459dp"
+                android:layout_height="459dp"
+                android:id="@+id/imgLogo"
+                android:layout_marginRight="35dp"
+                android:layout_marginTop="20dp" />
+
+            <Button
+                android:layout_width="267dp"
+                android:layout_height="wrap_content"
+                android:text="Ver Resultados Anteriores"
+                android:id="@+id/btnResultados"
+                android:layout_gravity="bottom"
+                android:textSize="30dp"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="550dp"
+                android:layout_height="wrap_content"
+                android:text="Cada pieza reproducirá un sonido. Toque una pieza para escucharlo  y toque otra para encontrar su par. Cuando se encuentre un par se iluminará la pieza de verde. Ganará cuando se encuentre un par para cada pieza. "
+                android:id="@+id/tvwExplicacion"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textSize="30dp"
+                android:layout_marginTop="120dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Nivel Inicial:"
+                android:id="@+id/tvwNivel"
+                android:layout_below="@+id/tvwExplicacion"
+                android:layout_alignLeft="@+id/tvwExplicacion"
+                android:layout_alignStart="@+id/tvwExplicacion"
+                android:textSize="35dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/rdgNivel">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 1"
+                        android:id="@+id/rdbNivel1"
+                        android:layout_below="@+id/tvwNivel"
+                        android:layout_alignLeft="@+id/tvwNivel"
+                        android:layout_alignStart="@+id/tvwNivel"
+                        android:textSize="30dp"
+                        android:layout_marginRight="20dp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 2"
+                        android:id="@+id/rdbNivel2"
+                        android:textSize="30dp"
+                        android:layout_below="@+id/tvwNivel"
+                        android:layout_toRightOf="@+id/rdbNivel1"
+                        android:layout_toEndOf="@+id/rdbNivel1"
+                        android:layout_marginRight="20dp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 3"
+                        android:id="@+id/rdbNivel3"
+                        android:textSize="30dp"
+                        android:layout_alignTop="@+id/rdbNivel2"
+                        android:layout_toRightOf="@+id/rdbNivel2"
+                        android:layout_toEndOf="@+id/rdbNivel2"
+                        android:layout_marginRight="20dp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 4"
+                        android:id="@+id/rdbNivel4"
+                        android:textSize="30dp"
+                        android:layout_alignTop="@+id/rdbNivel3"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:text="¡Jugar!"
+                android:id="@+id/btnJugar"
+                android:layout_gravity="bottom"
+                android:textSize="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="420dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
