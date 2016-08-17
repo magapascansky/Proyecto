@@ -1,15 +1,25 @@
 package com.example.proyecto.proyecto;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Freestyle extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Locale;
+
+public class Freestyle extends AppCompatActivity implements TextToSpeech.OnInitListener{
 
     ImageButton btn1;
     ImageButton btn2;
@@ -23,6 +33,9 @@ public class Freestyle extends AppCompatActivity {
     ImageButton btn10;
     ImageButton btn11;
     ImageButton btn12;
+    Button btnSalir;
+
+    String nombre;
 
     MediaPlayer dom;
     MediaPlayer re;
@@ -37,10 +50,17 @@ public class Freestyle extends AppCompatActivity {
     MediaPlayer lab;
     MediaPlayer sib;
 
+    TextToSpeech tts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freestyle);
+
+        tts = new TextToSpeech(Freestyle.this, Freestyle.this);
+        tts.setLanguage(Locale.US);
+
+        consulta();
 
         referencias();
         setListeners();
@@ -121,6 +141,11 @@ public class Freestyle extends AppCompatActivity {
             sib.start();
         }
     };
+    private View.OnClickListener btnSalir_Click = new View.OnClickListener(){
+        public void onClick(View v){
+            crearDialogoConfirmacionFinal().show();
+        }
+    };
 
     public void setListeners(){
         btn1.setOnClickListener(btnPresionado1_Click);
@@ -135,6 +160,7 @@ public class Freestyle extends AppCompatActivity {
         btn10.setOnClickListener(btnPresionado10_Click);
         btn11.setOnClickListener(btnPresionado11_Click);
         btn12.setOnClickListener(btnPresionado12_Click);
+        btnSalir.setOnClickListener(btnSalir_Click);
     }
 
     public void referencias(){
@@ -150,5 +176,46 @@ public class Freestyle extends AppCompatActivity {
         btn10  = (ImageButton) findViewById(R.id.btn10);
         btn11  = (ImageButton) findViewById(R.id.btn11);
         btn12  = (ImageButton) findViewById(R.id.btn12);
+        btnSalir = (Button) findViewById(R.id.btnSalir);
+    }
+
+   public Dialog crearDialogoConfirmacionFinal() {
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("¡Muy Bien " + nombre +"!");
+        builder.setMessage("Ya hiciste tu propia canción" + "\n" + "Ganaste un trofeo de Música");
+        HashMap<String, String> hash = new HashMap<String,String>();
+        hash.put(TextToSpeech.Engine.KEY_PARAM_STREAM, String.valueOf(AudioManager.STREAM_NOTIFICATION));
+        tts.speak("Muy bien" + nombre + ". Ya hiciste tu propia canción. Ganaste un trofeo de Música", TextToSpeech.QUEUE_FLUSH, hash);
+        builder.setIcon(R.drawable.trofeo);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Log.i("Diálogos", "Confirmación Aceptada.");
+                finish();
+                dialog.cancel();
+            }
+        });
+
+        return builder.create();
+
+    }
+    public void consulta() {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "database", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        Cursor curNombre = bd.rawQuery(  //devuelve 0 o 1 fila //es una consulta
+                "select nombre from Jugadores where ID=" + MainActivity.idUsuario, null);
+        if (curNombre.moveToFirst()) {  //si ha devuelto 1 fila, vamos al primero (que es el unico)
+
+            nombre = curNombre.getString(0);
+        } else{
+            Toast.makeText(this, "Error" , Toast.LENGTH_SHORT).show();
+        }
+
+        bd.close();
+
+    }
+    @Override
+    public void onInit(int i) {
+
     }
 }

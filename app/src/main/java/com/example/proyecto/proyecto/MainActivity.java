@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getWindow().setBackgroundDrawableResource(R.drawable.backgroundinicio);
         References();
         TraerUsuarios();
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaUsuarios);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         lstUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                idUsuario = i;
+                idUsuario = i+1;
                 edtName.setText(listaUsuarios.get(i));
             }
         });

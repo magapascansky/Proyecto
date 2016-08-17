@@ -115,7 +115,7 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
         consulta();
         Calendar c = Calendar.getInstance();
         System.out.println("Current time =&gt; "+c.getTime());
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-dd-MM HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         formattedDate = df.format(c.getTime());
 
         iniciar(nivel);

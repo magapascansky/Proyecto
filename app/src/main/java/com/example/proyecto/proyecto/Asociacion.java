@@ -110,7 +110,7 @@ public class Asociacion extends AppCompatActivity implements TextToSpeech.OnInit
         consulta();
         Calendar c = Calendar.getInstance();
         System.out.println("Current time =&gt; "+c.getTime());
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-dd-MM HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         formattedDate = df.format(c.getTime());
 
         guitar = MediaPlayer.create(getApplicationContext(), R.raw.guitar);
