@@ -16,7 +16,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table Jugadores(ID INTEGER PRIMARY KEY AUTOINCREMENT, nombre text)");
         db.execSQL("create table Resultados(ID INTEGER PRIMARY KEY AUTOINCREMENT, idJugador integer, IdJuego integer, IdNivel integer, fecha text, movimientos integer, tiempo double)");
-
+        db.execSQL("create table Trofeos(ID INTEGER PRIMARY KEY AUTOINCREMENT, idJugador integer, memoria integer, atencion integer, baile integer, musica integer)");
     }
 
     @Override
@@ -26,5 +26,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
         db.execSQL("drop table if exists Resultados");
         db.execSQL("create table Resultados(ID INTEGER PRIMARY KEY AUTOINCREMENT, idJugador integer, IdJuego integer, IdNivel integer, fecha text, movimientos integer, tiempo double)");
+
+        db.execSQL("drop table if exists Trofeos");
+        db.execSQL("create table Trofeos(ID INTEGER PRIMARY KEY AUTOINCREMENT, idJugador integer, memoria integer, atencion integer, baile integer, musica integer)");
     }
 }

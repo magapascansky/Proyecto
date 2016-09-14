@@ -66,6 +66,7 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
     Bundle datos;
     String nombre;
     String nivel;
+    int[] vecCants = new int[2];
 
     String formattedDate;
     long tStart;
@@ -113,6 +114,7 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
 
 
         consulta();
+        consultaTrofeos();
         Calendar c = Calendar.getInstance();
         System.out.println("Current time =&gt; "+c.getTime());
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -576,9 +578,42 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
         registro.put("movimientos", contMovimientos);
         registro.put("tiempo", elapsedSeconds);
         bd.insert("Resultados", null, registro);
+
+        ContentValues registro2 = new ContentValues();
+        if (vecCants[0]==0 && vecCants[1]==0)
+        {
+            registro2.put("memoria", vecCants[0]+1);
+            registro2.put("atencion", vecCants[1]+1);
+            bd.update("Trofeos", registro, "idJugador=?" + Integer.toString(MainActivity.idUsuario), null);
+        }
+        else {
+            registro2.put("idJugador", MainActivity.idUsuario);
+            registro2.put("memoria", 1);
+            registro2.put("atencion", 1);
+            bd.insert("Trofeos", null, registro);
+        }
+
         bd.close();
     }
+    public void consultaTrofeos() {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "database", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        String[] campos = new String[] {"memoria", "atencion"};
+        String[] args = new String[] {Integer.toString(MainActivity.idUsuario)};
+        Cursor curNombre = bd.query("Trofeos", campos, "idJugador=?", args, null, null, null);
+        if (curNombre.moveToFirst()) {  //si ha devuelto 1 fila, vamos al primero (que es el unico)
+            do
+            {
+                vecCants[0] = curNombre.getInt(0);
+                vecCants[1] = curNombre.getInt(1);
+            }while(curNombre.moveToNext());
+        } else {
+            vecCants[0] = 0;
+            vecCants[1] = 0;
+        }
+        bd.close();
 
+    }
     @Override
     public void onInit(int i) {
 

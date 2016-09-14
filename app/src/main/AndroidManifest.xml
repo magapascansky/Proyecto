@@ -27,7 +27,8 @@
         <activity android:name=".Simon" />
         <activity android:name=".ResultadosSimon" />
         <activity android:name=".HomeFreestyle" />
-        <activity android:name=".Freestyle"></activity>
+        <activity android:name=".Freestyle" />
+        <activity android:name=".SalaDeTrofeos"></activity>
     </application>
 
 </manifest>
