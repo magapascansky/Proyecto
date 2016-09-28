@@ -66,7 +66,7 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
     Bundle datos;
     String nombre;
     String nivel;
-    int[] vecCants = new int[2];
+    int[] vecCants = new int[4];
 
     String formattedDate;
     long tStart;
@@ -555,10 +555,9 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "database", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         Cursor curNombre = bd.rawQuery(  //devuelve 0 o 1 fila //es una consulta
-                "select nombre from Jugadores where ID=1", null);
+                "select nombre from Jugadores where ID=" + MainActivity.idUsuario, null);
         if (curNombre.moveToFirst()) {  //si ha devuelto 1 fila, vamos al primero (que es el unico)
             nombre = curNombre.getString(0);
-
         } else{
             Toast.makeText(this, "Error" , Toast.LENGTH_SHORT).show();
         }
@@ -582,23 +581,28 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
         ContentValues registro2 = new ContentValues();
         if (vecCants[0]==0 && vecCants[1]==0)
         {
-            registro2.put("memoria", vecCants[0]+1);
-            registro2.put("atencion", vecCants[1]+1);
-            bd.update("Trofeos", registro, "idJugador=?" + Integer.toString(MainActivity.idUsuario), null);
-        }
-        else {
             registro2.put("idJugador", MainActivity.idUsuario);
             registro2.put("memoria", 1);
             registro2.put("atencion", 1);
+            registro2.put("baile", 1);
+            registro2.put("musica", 1);
             bd.insert("Trofeos", null, registro);
+        }
+        else {
+            registro2.put("memoria", vecCants[0]+1);
+            registro2.put("atencion", vecCants[1]+1);
+            bd.update("Trofeos", registro, "idJugador=?" + Integer.toString(MainActivity.idUsuario), null);
+
         }
 
         bd.close();
     }
     public void consultaTrofeos() {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "database", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
-        String[] campos = new String[] {"memoria", "atencion"};
+        SQLiteDatabase bd = admin.getReadableDatabase();
+        /*Cursor curNombre = bd.rawQuery(  //devuelve 0 o 1 fila //es una consulta
+                "select IdNivel, fecha, movimientos, tiempo from Resultados where IdJuego=2 and idJugador=0", null);*/
+        String[] campos = new String[] {"memoria", "atencion", "baile", "musica"};
         String[] args = new String[] {Integer.toString(MainActivity.idUsuario)};
         Cursor curNombre = bd.query("Trofeos", campos, "idJugador=?", args, null, null, null);
         if (curNombre.moveToFirst()) {  //si ha devuelto 1 fila, vamos al primero (que es el unico)
@@ -606,10 +610,14 @@ public class Memotest extends AppCompatActivity implements TextToSpeech.OnInitLi
             {
                 vecCants[0] = curNombre.getInt(0);
                 vecCants[1] = curNombre.getInt(1);
+                vecCants[2] = curNombre.getInt(2);
+                vecCants[3] = curNombre.getInt(3);
             }while(curNombre.moveToNext());
         } else {
             vecCants[0] = 0;
             vecCants[1] = 0;
+            vecCants[2] = 0;
+            vecCants[3] = 0;
         }
         bd.close();
 

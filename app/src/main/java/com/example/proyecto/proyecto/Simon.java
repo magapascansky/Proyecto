@@ -53,8 +53,10 @@ public class Simon extends AppCompatActivity implements TextToSpeech.OnInitListe
     long tDelta;
     double elapsedSeconds;
 
-    MediaPlayer vecSonidos[] = new MediaPlayer[7];
-    String vecNombresSonidos[] = new String[7];
+    MediaPlayer vecSonidos[] = new MediaPlayer[5];
+    String vecNombresSonidos[] = new String[5];
+    MediaPlayer vecSonidos2[] = new MediaPlayer[10];
+    String vecNombresSonidos2[] = new String[10];
 
 
 
@@ -92,16 +94,14 @@ public class Simon extends AppCompatActivity implements TextToSpeech.OnInitListe
         vecSonidos[2]=drum;
         vecSonidos[3]=piano;
         vecSonidos[4]=guitar;
-        vecSonidos[5]=drum;
-        vecSonidos[6]=piano;
+
 
         vecNombresSonidos[0]="1";
         vecNombresSonidos[1]="2";
         vecNombresSonidos[2]="3";
         vecNombresSonidos[3]="1";
         vecNombresSonidos[4]="2";
-        vecNombresSonidos[5]="3";
-        vecNombresSonidos[6]="1";
+
 
         iniciar(nivel);
 
@@ -151,6 +151,21 @@ public class Simon extends AppCompatActivity implements TextToSpeech.OnInitListe
                 }
                 else if (contApretados == 3 && contVez == 3)
                 {
+                        correcto.start();
+                        contVez++;
+                        contApretados=0;
+                        Toast.makeText(getApplicationContext(), "¡Muy bien!", Toast.LENGTH_SHORT).show();
+
+                }
+                else if (contApretados == 4 && contVez == 4)
+                {
+                    correcto.start();
+                    contVez++;
+                    contApretados=0;
+                    Toast.makeText(getApplicationContext(), "¡Muy bien!", Toast.LENGTH_SHORT).show();
+                }
+                else if (contApretados == 5 && contVez == 5)
+                {
                     if (nivel.equals("1")){
                         aplausos.start();
                         tEnd = System.currentTimeMillis();
@@ -164,48 +179,6 @@ public class Simon extends AppCompatActivity implements TextToSpeech.OnInitListe
                         contVez++;
                         contApretados=0;
                         Toast.makeText(getApplicationContext(), "¡Muy bien!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else if (contApretados == 4 && contVez == 4)
-                {
-                    correcto.start();
-                    contVez++;
-                    contApretados=0;
-                    Toast.makeText(getApplicationContext(), "¡Muy bien!", Toast.LENGTH_SHORT).show();
-                }
-                else if (contApretados == 5 && contVez == 5)
-                {
-                    if (nivel.equals("2")){
-                        aplausos.start();
-                        tEnd = System.currentTimeMillis();
-                        tDelta = tEnd - tStart;
-                        elapsedSeconds = tDelta / 1000.0;
-                        alta();
-                        crearDialogoConfirmacion().show();
-                    }
-                    else {
-                        correcto.start();
-                        contVez++;
-                        contApretados=0;
-                        Toast.makeText(getApplicationContext(), "¡Muy bien!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else if (contApretados == 6 && contVez == 6)
-                {
-                    correcto.start();
-                    Toast.makeText(getApplicationContext(), "¡Muy bien!", Toast.LENGTH_SHORT).show();
-                    contVez++;
-                    contApretados=0;
-                }
-                else if (contApretados == 7 && contVez == 7)
-                {
-                    if (nivel.equals("3")){
-                        aplausos.start();
-                        tEnd = System.currentTimeMillis();
-                        tDelta = tEnd - tStart;
-                        elapsedSeconds = tDelta / 1000.0;
-                        alta();
-                        crearDialogoConfirmacionFinal().show();
                     }
                 }
 
@@ -242,17 +215,37 @@ public class Simon extends AppCompatActivity implements TextToSpeech.OnInitListe
         int numRandom2;
         MediaPlayer tempMedia;
         String temp;
-        for (int i=0; i<100; i++)
+
+        if (nivel.equals("1"))
         {
-            numRandom1 = generadorRandom.nextInt(7 - 0) + 0;
-            numRandom2 = generadorRandom.nextInt(7 - 0) + 0;
-            tempMedia = vecSonidos[numRandom1];
-            vecSonidos[numRandom1] = vecSonidos[numRandom2];
-            vecSonidos[numRandom2] = tempMedia;
-            temp = vecNombresSonidos[numRandom1];
-            vecNombresSonidos[numRandom1] = vecNombresSonidos[numRandom2];
-            vecNombresSonidos[numRandom2] = temp;
-        }//desordena el vector
+            for (int i=0; i<100; i++)
+            {
+                numRandom1 = generadorRandom.nextInt(5 - 0) + 0;
+                numRandom2 = generadorRandom.nextInt(5 - 0) + 0;
+                tempMedia = vecSonidos[numRandom1];
+                vecSonidos[numRandom1] = vecSonidos[numRandom2];
+                vecSonidos[numRandom2] = tempMedia;
+                temp = vecNombresSonidos[numRandom1];
+                vecNombresSonidos[numRandom1] = vecNombresSonidos[numRandom2];
+                vecNombresSonidos[numRandom2] = temp;
+            }//desordena el vector
+        }
+        else {
+            setContentView(R.layout.simon2);
+            for (int i=0; i<100; i++)
+            {
+                numRandom1 = generadorRandom.nextInt(10 - 0) + 0;
+                numRandom2 = generadorRandom.nextInt(10 - 0) + 0;
+                tempMedia = vecSonidos2[numRandom1];
+                vecSonidos2[numRandom1] = vecSonidos2[numRandom2];
+                vecSonidos2[numRandom2] = tempMedia;
+                temp = vecNombresSonidos2[numRandom1];
+                vecNombresSonidos2[numRandom1] = vecNombresSonidos2[numRandom2];
+                vecNombresSonidos2[numRandom2] = temp;
+            }//desordena el vector
+
+        }
+
     }
     public Dialog crearDialogoConfirmacionFinal() {
 

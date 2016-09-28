@@ -18,6 +18,7 @@ public class HomeJuegos extends AppCompatActivity{
     Button btnMemoria;
     Button btnBailar;
     Button btnFreestyle;
+    Button btnTrofeos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,12 @@ public class HomeJuegos extends AppCompatActivity{
                 iniciarActividad("freestyle");
             }
         });
+        btnTrofeos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iniciarActividad("trofeos");
+            }
+        });
 
 
     }
@@ -64,6 +71,7 @@ public class HomeJuegos extends AppCompatActivity{
         btnMemoria = (Button) findViewById(R.id.btnMemoria);
         btnBailar = (Button) findViewById(R.id.btnBailar);
         btnFreestyle = (Button) findViewById(R.id.btnFreestyle);
+        btnTrofeos = (Button) findViewById(R.id.btnTrofeos);
     }
 
     public void iniciarActividad(String activityAIniciar)
@@ -83,6 +91,9 @@ public class HomeJuegos extends AppCompatActivity{
                 break;
             case "freestyle":
                 nuevaActivity.setClass(this, HomeFreestyle.class);
+                break;
+            case "trofeos":
+                nuevaActivity.setClass(this, SalaDeTrofeos.class);
                 break;
         }
         startActivity(nuevaActivity);

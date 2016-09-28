@@ -16,52 +16,44 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="481dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="40dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5">
 
             <ImageView
-                android:layout_width="459dp"
-                android:layout_height="459dp"
-                android:id="@+id/imgLogo"
-                android:layout_marginRight="35dp"
-                android:layout_marginTop="20dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgLogo" />
 
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_weight="0.14"
+            android:layout_gravity="center_vertical">
 
             <TextView
-                android:layout_width="550dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tocá los botones para formar una canción."
                 android:id="@+id/tvwExplicacion"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:textSize="30dp"
-                android:layout_marginTop="150dp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_weight="0.9" />
 
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:text="¡Jugar!"
                 android:id="@+id/btnJugar"
-                android:layout_gravity="bottom"
+                android:layout_gravity="bottom|right"
                 android:textSize="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="420dp" />
+                android:layout_weight="0.1" />
         </LinearLayout>
 
     </LinearLayout>

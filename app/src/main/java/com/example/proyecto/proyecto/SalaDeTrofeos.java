@@ -37,9 +37,10 @@ public class SalaDeTrofeos extends AppCompatActivity {
     public void consulta() {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "database", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
-        String[] campos = new String[] {"memoria", "atencion", "baile", "musica"};
+        /*String[] campos = new String[] {"memoria", "atencion", "baile", "musica"};
         String[] args = new String[] {Integer.toString(MainActivity.idUsuario)};
-        Cursor curNombre = bd.query("Trofeos", campos, "idJugador=?", args, null, null, null);
+        Cursor curNombre = bd.query("Trofeos", campos, "idJugador=?", args, null, null, null);*/
+        Cursor curNombre = bd.rawQuery("select memoria, atencion, baile, musica from Trofeos where idJugador="+MainActivity.idUsuario,null);
         if (curNombre.moveToFirst()) {  //si ha devuelto 1 fila, vamos al primero (que es el unico)
             do
             {

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/transparent"
-        android:layout_weight="0.4">
+        android:layout_weight="0.3">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.6">
+        android:layout_weight="0.3">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -58,5 +58,31 @@
             android:src="@drawable/drum"
             android:background="@android:color/transparent"
             android:layout_weight="0.3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.3" >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:src="@drawable/trumpet"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.3" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:src="@drawable/bell"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.3" />
+
     </LinearLayout>
 </LinearLayout>

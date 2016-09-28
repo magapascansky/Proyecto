@@ -28,14 +28,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView"
                 android:src="@drawable/memoria"
-                android:layout_margin="0.7dp" />
+                android:layout_weight="0.5"
+                style="0.3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/tvwMemoria"
-                android:layout_margin="0.2dp"
                 android:layout_gravity="center" />
         </LinearLayout>
 
@@ -50,14 +50,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView2"
                 android:src="@drawable/atencion"
-                android:layout_weight="0.7" />
+                android:layout_weight="0.5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/tvwAtencion"
-                android:layout_weight="0.2"
+                android:layout_weight="0.3"
                 android:layout_gravity="center" />
         </LinearLayout>
 
@@ -81,14 +81,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView3"
                 android:src="@drawable/baile"
-                android:layout_weight="0.7" />
+                android:layout_weight="0.5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/tvwBaile"
-                android:layout_weight="0.2"
+                android:layout_weight="0.3"
                 android:layout_gravity="center" />
         </LinearLayout>
 
@@ -103,14 +103,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView4"
                 android:src="@drawable/musica"
-                android:layout_weight="0.7" />
+                android:layout_weight="0.5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/tvwMusica"
-                android:layout_weight="0.2"
+                android:layout_weight="0.3"
                 android:layout_gravity="center" />
         </LinearLayout>
     </LinearLayout>

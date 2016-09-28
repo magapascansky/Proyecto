@@ -15,45 +15,55 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp">
+        android:layout_weight="0.4">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn1"
-            android:src="@drawable/dom"/>
+            android:src="@drawable/dom"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn8"
-            android:src="@drawable/reb"/>
+            android:src="@drawable/reb"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn4"
-            android:src="@drawable/fa"/>
+            android:src="@drawable/fa"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn6"
-            android:src="@drawable/mib"/>
+            android:src="@drawable/mib"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn9"
-            android:src="@drawable/la"/>
+            android:src="@drawable/la"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn10"
-            android:src="@drawable/solb"/>
+            android:src="@drawable/solb"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
     </LinearLayout>
 
@@ -61,49 +71,70 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        android:layout_weight="0.4">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn5"
-            android:src="@drawable/sol"/>
+            android:src="@drawable/sol"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn3"
-            android:src="@drawable/lab"/>
+            android:src="@drawable/lab"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn11"
-            android:src="@drawable/mi"/>
+            android:src="@drawable/mi"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn12"
-            android:src="@drawable/sib"/>
+            android:src="@drawable/sib"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn7"
-            android:src="@drawable/si"/>
+            android:src="@drawable/si"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn2"
-            android:src="@drawable/mib"/>
+            android:src="@drawable/mib"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.16" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Termine!"
-        android:id="@+id/btnSalir" />
+        android:layout_weight="0.1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="¡Termine!"
+            android:id="@+id/btnSalir"
+            android:layout_weight="1"
+            android:textSize="30dp" />
+    </LinearLayout>
 
 </LinearLayout>
